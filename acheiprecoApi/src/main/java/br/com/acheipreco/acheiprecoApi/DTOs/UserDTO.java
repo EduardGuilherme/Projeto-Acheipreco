@@ -1,4 +1,6 @@
 package br.com.acheipreco.acheiprecoApi.DTOs;
 
-public record UserDTO(String nomeCompleto, String email, String tipodeusuario) {
+import br.com.acheipreco.acheiprecoApi.Enums.Tipodeusuario;
+
+public record UserDTO(String nomeCompleto,String nomeEmpresa, String email, String senha, Tipodeusuario tipodeusuario) {
 }
