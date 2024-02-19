@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,22 +13,20 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-@EntityScan
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "user")
-public class User implements UserDetails {
+@Table(name = "users")
+public class Users implements UserDetails {
     private static final long SerialVersion = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String nomeCompleto;
-    private String nomeEmpresa;
     private String senha;
     private String email;
-    @Enumerated(EnumType.ORDINAL)
     private Tipodeusuario tipodeusuario;
 
 
@@ -45,9 +42,8 @@ public class User implements UserDetails {
         }
     }
 
-    public User(String nomeCompleto, String nomeEmpresa, String senha, String email, Tipodeusuario tipodeusuario) {
+    public Users(String nomeCompleto, String senha, String email, Tipodeusuario tipodeusuario) {
         this.nomeCompleto = nomeCompleto;
-        this.nomeEmpresa = nomeEmpresa;
         this.senha = senha;
         this.email = email;
         this.tipodeusuario = tipodeusuario;

@@ -1,7 +1,7 @@
 package br.com.acheipreco.acheiprecoApi.Services;
 
 
-import br.com.acheipreco.acheiprecoApi.Model.User;
+import br.com.acheipreco.acheiprecoApi.Model.Users;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
@@ -19,7 +19,7 @@ public class TokenServices {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    public String generationToken(User user){
+    public String generationToken(Users user){
         try{
             Algorithm algorithm = Algorithm.HMAC256(secret);
             String token = JWT.create()

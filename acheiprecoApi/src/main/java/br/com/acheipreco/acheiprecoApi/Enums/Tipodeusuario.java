@@ -1,16 +1,16 @@
 package br.com.acheipreco.acheiprecoApi.Enums;
 
 public enum Tipodeusuario {
-    EMPRESA(1),//crud
-    CLIENTE(2),//lista de empresas, lista de produtos, geolocalização
-    ADMIN(3);//TODOS OS PODERES
+    EMPRESA("EMPRESA"),//crud
+    CLIENTE("CLIENTE"),//lista de empresas, lista de produtos, geolocalização
+    ADMIN("ADMIN");//TODOS OS PODERES
 
-    private final int number;
-    Tipodeusuario(int number) {
-        this.number=number;
+    private final String type;
+    Tipodeusuario(String type) {
+        this.type=type;
     }
 
-    public int getNumber(){
-        return number;
+    public String getType(){
+        return type;
     }
 }
