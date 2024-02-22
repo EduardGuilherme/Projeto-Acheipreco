@@ -1,5 +1,6 @@
 package com.example.NaoSeiONome.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,14 +24,20 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    private String name;
     private String login;
+    private String image;
     private String password;
     private UserRole role;
+    private Boolean isLocked;
 
-    public User(String login, String password, UserRole role) {
+    public User(String name, String login, String image, String password, UserRole role) {
+        this.name = name;
         this.login = login;
+        this.image = image;
         this.password = password;
         this.role = role;
+        this.isLocked = true;
     }
 
     @Override
@@ -38,13 +45,14 @@ public class User implements UserDetails {
         if (this.role == UserRole.ADMIN) {
             return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_EMPRESA"), new SimpleGrantedAuthority("ROLE_CLIENTE"));
         } else if (this.role == UserRole.EMPRESA) {
-            return List.of(new SimpleGrantedAuthority("ROLE_EMPRESA"));
+            return List.of(new SimpleGrantedAuthority("ROLE_EMPRESA"), new SimpleGrantedAuthority("ROLE_CLIENTE"));
         } else {
             return List.of(new SimpleGrantedAuthority("ROLE_CLIENTE"));
         }
     }
 
     @Override
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -61,7 +69,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return isLocked;
     }
 
     @Override
