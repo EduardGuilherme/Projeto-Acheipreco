@@ -26,7 +26,7 @@ public class ProductService {
     CompanyRepository companyRepository;
 
     public ResponseEntity<String> createProduct(ProductDTO productDTO){
-        if(companyRepository.findById(productDTO.idCompany()) == null){
+        if(companyRepository.findById(productDTO.idCompany()).isEmpty()){
             return ResponseEntity.badRequest().build();
         }
         Optional<Company> company = companyRepository.findById(productDTO.idCompany());
@@ -47,7 +47,7 @@ public class ProductService {
     }
 
     public ResponseEntity<String> deleteProduct(String id){
-        if(productRepository.findById(id) == null){
+        if(productRepository.findById(id).isEmpty()){
             return ResponseEntity.badRequest().build();
         }
         Optional<Product> product = productRepository.findById(id);
