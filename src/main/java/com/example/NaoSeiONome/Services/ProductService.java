@@ -47,7 +47,8 @@ public class ProductService {
     }
 
     public ResponseEntity<String> deleteProduct(String id){
-        if(productRepository.findById(id) == null){
+
+        if(productRepository.findById(id).isEmpty()){
             return ResponseEntity.badRequest().build();
         }
         Optional<Product> product = productRepository.findById(id);

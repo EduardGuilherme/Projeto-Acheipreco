@@ -1,10 +1,11 @@
 package com.example.NaoSeiONome.Controller;
-
 import com.example.NaoSeiONome.DTO.CompanyDTO;
 import com.example.NaoSeiONome.DTO.ProductDTO;
 import com.example.NaoSeiONome.Model.Product;
 import com.example.NaoSeiONome.Repository.CompanyRepository;
 import com.example.NaoSeiONome.Services.CompanyService;
+package com.example.NaoSeiONome.Controller;
+import com.example.NaoSeiONome.DTO.ProductDTO;
 import com.example.NaoSeiONome.Services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
