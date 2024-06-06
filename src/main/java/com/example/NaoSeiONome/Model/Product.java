@@ -1,6 +1,4 @@
-
 package com.example.NaoSeiONome.Model;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +10,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -22,7 +19,7 @@ public class Product {
     private String productType;
     private String productImage;
     private Integer productQtd;
-    @Column(scale = 2)
+    @Column(scale = 2, precision = 10)
     private Float price;
 
     public Product(Company idCompany, String productName, String productType, String productImage, Integer productQtd, Float price) {

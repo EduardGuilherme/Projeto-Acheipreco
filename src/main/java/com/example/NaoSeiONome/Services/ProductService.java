@@ -26,7 +26,7 @@ public class ProductService {
     CompanyRepository companyRepository;
 
     public ResponseEntity<String> createProduct(ProductDTO productDTO){
-        if(companyRepository.findById(productDTO.idCompany()).isEmpty()){
+        if(companyRepository.findById(productDTO.idCompany()) == null){
             return ResponseEntity.badRequest().build();
         }
         Optional<Company> company = companyRepository.findById(productDTO.idCompany());
@@ -47,6 +47,7 @@ public class ProductService {
     }
 
     public ResponseEntity<String> deleteProduct(String id){
+
         if(productRepository.findById(id).isEmpty()){
             return ResponseEntity.badRequest().build();
         }
@@ -75,6 +76,6 @@ public class ProductService {
     }
 
     private Float ArredondarValor(BigDecimal valor){
-        return valor.setScale(2, RoundingMode.DOWN).floatValue();
+        return valor.setScale(2, RoundingMode.HALF_DOWN).floatValue();
     }
 }

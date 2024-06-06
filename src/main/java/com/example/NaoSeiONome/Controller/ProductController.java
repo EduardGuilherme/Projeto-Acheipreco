@@ -1,6 +1,10 @@
-
 package com.example.NaoSeiONome.Controller;
-
+import com.example.NaoSeiONome.DTO.CompanyDTO;
+import com.example.NaoSeiONome.DTO.ProductDTO;
+import com.example.NaoSeiONome.Model.Product;
+import com.example.NaoSeiONome.Repository.CompanyRepository;
+import com.example.NaoSeiONome.Services.CompanyService;
+package com.example.NaoSeiONome.Controller;
 import com.example.NaoSeiONome.DTO.ProductDTO;
 import com.example.NaoSeiONome.Services.ProductService;
 import jakarta.validation.Valid;
@@ -17,7 +21,7 @@ public class ProductController {
 
     @GetMapping("/list")
     public ResponseEntity findAll(){
-        return null;//productService.listAllProduct();
+        return productService.listAllProduct();
     }
 
     @PostMapping("/create")
@@ -35,5 +39,3 @@ public class ProductController {
         return productService.changeProduct(productDTO,id);
     }
 }
-
-
